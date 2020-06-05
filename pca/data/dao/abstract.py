@@ -57,10 +57,7 @@ class QueryChain(IQueryChain):
         """
         qc = self.__class__(self._dao)
         qc._ids = self._ids or ids
-        if filters:
-            qc._filters = (self._filters or []) + filters
-        else:
-            qc._filters = self._filters
+        qc._filters = (self._filters or []) + filters if filters else self._filters
         return qc
 
     def __repr__(self):

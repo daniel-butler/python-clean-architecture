@@ -1,7 +1,6 @@
 def _subclasses_recursive_search(cls):
     for subclass in cls.__subclasses__():
-        for cls in _subclasses_recursive_search(subclass):
-            yield cls
+        yield from _subclasses_recursive_search(subclass)
         yield subclass
 
 

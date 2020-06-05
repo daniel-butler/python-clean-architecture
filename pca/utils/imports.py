@@ -22,11 +22,8 @@ def import_all_names(_file, _name):
                if filename.endswith('.py') and filename != '__init__.py']:
         module = __import__('.'.join([_name, py]), fromlist=[py])
         module_names = getattr(module, '__all__', None) or dir(module)
-        objects = dict(
-            (name, getattr(module, name))
-            for name in module_names
-            if not name.startswith('_')
-        )
+        objects = {name: getattr(module, name) for name in module_names
+                    if not name.startswith('_')}
         for name, obj in objects.items():
             if hasattr(parent_module, name) and \
                getattr(parent_module, name) is not obj:

@@ -108,8 +108,7 @@ class Repository(IRepository[Id, Entity]):
         dto = self.dao.get(id_)
         if not dto:
             raise QueryErrors.NOT_FOUND.with_params(id=id_, entity=self.entity)
-        entity = self.factory.construct(dto)
-        return entity
+        return self.factory.construct(dto)
 
     def contains(self, id_: Id) -> bool:
         """Checks whether an entity of given id is in the repo."""

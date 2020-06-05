@@ -108,8 +108,7 @@ class TinyDbDao(AbstractDao[int]):
         if query_chain._is_trivial:
             return self._table.update(update)
         filtered = self._resolve_filter(query_chain)
-        result = self._table.update(update, doc_ids=[d.doc_id for d in filtered])
-        return result
+        return self._table.update(update, doc_ids=[d.doc_id for d in filtered])
 
     def _resolve_remove(self, query_chain: QueryChain) -> Ids:
         """
@@ -123,8 +122,7 @@ class TinyDbDao(AbstractDao[int]):
         if query_chain._is_trivial:
             raise QueryErrors.UNRESTRICTED_REMOVE
         filtered = self._resolve_filter(query_chain)
-        result = self._table.remove(doc_ids=[d.doc_id for d in filtered])
-        return result
+        return self._table.remove(doc_ids=[d.doc_id for d in filtered])
 
     # dao commands
 
