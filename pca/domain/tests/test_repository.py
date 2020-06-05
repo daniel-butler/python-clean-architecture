@@ -100,8 +100,7 @@ class TestApi:
 
     @pytest.fixture
     def repo(self, container, factory, dao):
-        repo = Repository(container, factory)
-        return repo
+        return Repository(container, factory)
 
     def test_create(self, data, repo: Repository, dao: IDao):
         entity = repo.create(**data)

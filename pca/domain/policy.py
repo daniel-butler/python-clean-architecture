@@ -9,8 +9,7 @@ def policy_constructor(cls, d):
     class) to the class __init__.
     """
     d.pop('__type__')
-    instance = cls(**d)
-    return instance
+    return cls(**d)
 
 
 class PolicyMeta(type):
@@ -91,10 +90,7 @@ class Policy(metaclass=PolicyMeta):
         (normally, functions aren't serializable).
         """
         # names of all strategy functions under strategy role keys
-        d = dict(
-            (role, get_func_name(getattr(self, role)))
-            for role in self.STRATEGY_CHOICES
-        )
+        d = {role: get_func_name(getattr(self, role)) for role in self.STRATEGY_CHOICES}
         # additional attributes to serialize
         d.update(
             (key, getattr(self, key))

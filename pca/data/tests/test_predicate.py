@@ -331,7 +331,7 @@ def test_has():
 def test_predicate_eq(example_dict):
     """One mistakenly try to compare Predicate instance with a value"""
     predicate = Var().foo == 1
-    assert not (predicate == example_dict)
+    assert predicate != example_dict
 
 
 def test_hash():

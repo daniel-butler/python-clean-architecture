@@ -39,8 +39,7 @@ class TestApi:
             {'char': 'b', 'is_a': False},
             {'char': 'c', 'is_a': False}
         """
-        dao = InMemoryDao(mock_container, initial_content=content)
-        return dao
+        return InMemoryDao(mock_container, initial_content=content)
 
     # Dao.all
     def test_all(self, dao: InMemoryDao):

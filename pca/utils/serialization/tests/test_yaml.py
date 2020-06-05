@@ -65,12 +65,12 @@ def test_load_with_include(main_contents, inner_contents):
 
 
 def test_load_from_file():
-    contents = (
-        "---\n"
-        "foo: bar\n"
-    )
-
     with mock.patch('pca.utils.serialization.yaml.read_from_file') as mocked_read_from_file:
+        contents = (
+            "---\n"
+            "foo: bar\n"
+        )
+
         mocked_read_from_file.return_value = contents
         result = serialization.load_yaml_from_filepath('path/to/a/file.yaml')
 

@@ -3,7 +3,7 @@ from functools import singledispatch
 import typing as t
 
 SliceAll = slice(None)
-generator = type(e for e in ())
+generator = type(iter(()))
 
 
 def sget(target, key: str, default: t.Any = None):
